@@ -1,6 +1,7 @@
 {
 "device_ip":"127.0.0.1:5585",
 "app_name":"tdj",
+"adb_path":"E:/Program Files/platform-tools_r34.0.0-windows/platform-tools/adb.exe",
 "cronListCfg":{
     "神龛":true,
     "历练":true,

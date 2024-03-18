@@ -1,0 +1,34 @@
+{
+	"进入好友界面":{
+		"checkbefore":"",
+		"stepName":"button",
+		"stepPara":"主页-好友",
+		"checkafter":"好友-页面",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	},
+	"若无领取则退出":{
+		"checkbefore":"好友-完成",
+		"stepName":"mainpage",
+		"stepPara":"",
+		"checkafter":"",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	},
+	"全部赠送":{
+		"checkbefore":"好友-全部赠送",
+		"stepName":"button",
+		"stepPara":"好友-全部赠送",
+		"checkafter":"好友-不可赠送",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	},
+	"全部领取":{
+		"checkbefore":"好友-全部领取",
+		"stepName":"button",
+		"stepPara":"好友-全部领取",
+		"checkafter":"好友-不可领取",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	}
+}

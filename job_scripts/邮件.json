@@ -1,0 +1,34 @@
+{
+	"进入邮件界面":{
+		"checkbefore":"",
+		"stepName":"button",
+		"stepPara":"主页-邮件",
+		"checkafter":"邮件-页面",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	},
+	"一键领取":{
+		"checkbefore":"邮件-一键领取",
+		"stepName":"button",
+		"stepPara":"邮件-一键领取",
+		"checkafter":"",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	},
+	"等1秒":{
+		"checkbefore":"",
+		"stepName":"wait",
+		"stepPara":"1",
+		"checkafter":"",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	},
+	"获得物品":{
+		"checkbefore":"按钮-获得物品",
+		"stepName":"clickback",
+		"stepPara":"",
+		"checkafter":"邮件-页面",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"进入历练界面":{
+		"checkbefore":"",
+		"stepName":"button",
+		"stepPara":"主页-历练",
+		"checkafter":"历练-页面-每日任务",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	},
+	"若无领取则退出":{
+		"checkbefore":"历练-按钮-领取",
+		"stepName":"mainpage",
+		"stepPara":"",
+		"checkafter":"",
+		"beforeIsNot":true,
+		"afterIsNot":false
+	},
+	"一键领取":{
+		"checkbefore":"历练-按钮-领取",
+		"stepName":"button",
+		"stepPara":"历练-按钮-一键领取",
+		"checkafter":"按钮-获得物品",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	},
+	"获得物品":{
+		"checkbefore":"按钮-获得物品",
+		"stepName":"clickback",
+		"stepPara":"",
+		"checkafter":"历练-页面-每日任务",
+		"beforeIsNot":false,
+		"afterIsNot":false
+	}
+}
