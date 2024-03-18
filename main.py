@@ -627,17 +627,12 @@ def every_x_days(x):
     return cycle_index + 1
 
 
-def connect_script():
-    # input: tasksList([task_name(str),task_name(str)......])
-
+def connect_test():
     # 启动，连接模拟器
     if not adb_connect_emulator(): return False
     # 启动app
     if not adb_connect_app(): return False
-    # 登录
-    login_script()
-    # 至主页
-    mainpage()
+    return "Connected"
 
 
 def cronTasks():
@@ -755,7 +750,9 @@ def dailyTasks():
 
 
 def job_script():
-    connect_script()
+    login_script()
+    # 至主页
+    mainpage()
     cronTasks()
     dailyTasks()
     cronTasks()
@@ -773,13 +770,19 @@ class CamShow(QMainWindow, Ui_mainWindow):
         self.checkboxes = self.findChildren(QCheckBox)
         self.comboboxes = self.findChildren(QComboBox)
 
+        # load log window
+        self.log_select = 0  # 1-connection_log, 0-main_textBox_Log
+        self.stdout = sys.stdout
+        sys.stdout = self
+
         # load config file
         self.load_config_file()
 
-        # load main page buttons
+        # load buttons
         self.main_button_load.clicked.connect(self.button_load)
         self.main_button_save.clicked.connect(self.button_save)
         self.main_button_start.clicked.connect(self.button_start)
+        self.connection_button_connect.clicked.connect(self.button_connect)
 
         # load port
         self.connection_input_port.setText(device_ip)
@@ -813,11 +816,35 @@ class CamShow(QMainWindow, Ui_mainWindow):
 
     def button_start(self):
         logging.info("Start...")
-        self.save_config_file(configFile)
+        print("Start...")
+        #self.save_config_file(configFile)
+        job_script()
+        print("Finish...")
         logging.info("Done...")
+
+    def button_connect(self):
+        logging.info("Start...")
+        self.log_select = 1
+        print(connect_test())
+        self.log_select = 0
+        logging.info("Done...")
+
+    def write(self, text):
+        # 将输出文本添加到 QPlainTextEdit
+        if self.log_select:
+            cursor = self.connection_log.textCursor()
+        else:
+            cursor = self.main_textBox_Log.textCursor()
+        cursor.movePosition(cursor.End)
+        cursor.insertText(text)
+
+    def __del__(self):
+        # 在程序结束时恢复原始的标准输出流
+        sys.stdout = self.stdout
 
     def button_save(self):
         self.save_config_file(configFile)
+        print("Saved")
         logging.info("Config file saved.")
 
     def button_load(self):
@@ -826,6 +853,7 @@ class CamShow(QMainWindow, Ui_mainWindow):
         self.connection_input_port.setText(device_ip)
         self.load_tasks()
         self.load_task_configs()
+        print("Loaded")
         logging.info("Config file loaded.")
 
     def load_config_file(self):
@@ -846,7 +874,6 @@ class CamShow(QMainWindow, Ui_mainWindow):
         global cronListCfg, dailyListCfg, detailCfg, device_ip, app_name, adb_path
         config = {"device_ip": device_ip, "app_name": app_name, "adb_path": adb_path, "cronListCfg": cronListCfg,
                   "dailyListCfg": dailyListCfg, "detailCfg": detailCfg}
-        print(config)
         with open(file, 'w', encoding='utf-8') as f:
             json.dump(config, f, indent=4, ensure_ascii=False)
 
