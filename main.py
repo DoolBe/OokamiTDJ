@@ -761,6 +761,7 @@ def job_script():
 # endregion Task functions
 
 
+
 class CamShow(QMainWindow, Ui_mainWindow):
     def __init__(self):
         super(CamShow, self).__init__()
@@ -817,10 +818,9 @@ class CamShow(QMainWindow, Ui_mainWindow):
     def button_start(self):
         logging.info("Start...")
         print("Start...")
-        #self.save_config_file(configFile)
         job_script()
         print("Finish...")
-        logging.info("Done...")
+        logging.info("Finish...")
 
     def button_connect(self):
         logging.info("Start...")
